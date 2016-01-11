@@ -1,0 +1,28 @@
+<?php
+
+ $title = 'Modifier album';
+ $this->headTitle($title);
+ ?>
+ <h1 class="title"><?php echo $this->escapeHtml($title); ?></h1>
+
+ <?php
+ $form = $this->form;
+ $form->setAttribute('action', $this->url(
+     'album',
+     array(
+         'action' => 'edit',
+         'id'     => $this->id,
+     )
+ ));
+ $form->prepare();
+ 
+ echo $this->form()->openTag($form);
+ echo $this->formHidden($form->get('id'));
+ echo "<div class='title'>";
+ echo $this->formRow($form->get('title'));
+ echo ' ';
+ echo $this->formRow($form->get('artist'));
+ echo "</div>";
+ echo $this->formSubmit($form->get('submit'));
+ echo $this->form()->closeTag();
+
